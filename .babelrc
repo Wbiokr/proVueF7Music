@@ -1,10 +1,5 @@
 {
-    "presets":["es2015"],
-    "comments":false,
-    "env":{
-        "plugins":[
-            ["transform-runtime",{"profill":false,"regenerator":false}]
-        ]
-    },
-    "ignore":["jquery.*.js"]
+  "presets": [
+    ["env", { "modules": false }]
+  ]
 }
