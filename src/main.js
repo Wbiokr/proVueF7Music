@@ -11,7 +11,7 @@ import Framework7Vue from 'framework7-vue'
 import Routes from './routes.js'
 
 // Import App Component
-import App from './app.vue'
+import App from './views/app.vue'
 
 // Init F7 Vue Plugin
 Vue.use(Framework7Vue)
