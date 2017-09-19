@@ -11,7 +11,7 @@ import './style/iconfont.css';
 
 Vue.use(MintUI);
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
 new Vue({
