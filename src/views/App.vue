@@ -13,3 +13,9 @@
     components:{vHeader,vFooter}
   }
 </script>
+<style lang="stylus">
+  body
+    background rgba(240,240,240,.9)
+    // height 2000px
+
+</style>
