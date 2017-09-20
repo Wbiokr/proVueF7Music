@@ -1,17 +1,16 @@
 <template lang='jade'>
-  .header.e32
-    mt-header(title='' class='headeBar e32')
-      router-link(to="/" slot="left")
-        mt-button(icon="back") 返回
-      mt-button(icon="search" slot="right" @click='handleClose')
-    nav
+  .header(:class="{'e32':!isSearch}")
+    mt-header(title='' class='headeBar e32' v-show='!isSearch')
+      mt-button(icon="icon iconfont icon-HAMBURGERMENU" slot='left' class='setting')
+      mt-button(icon="search" slot="right" @click='search')
+    nav(v-show='!isSearch')
       router-link(to="/") 
         i(class='icon-MUSIC iconfont')
       router-link(to='/home/') 
         i(class='iconfont icon-SPEAKER')
       router-link(to='/home/') 
         i(class='iconfont icon-DISPLAY')
-        
+    vSearch(v-if='isSearch')    
 </template>
 <style lang="stylus">
   .header
@@ -22,6 +21,9 @@
     // padding-top 20px
     .headeBar
       height 100%
+      .setting
+        font-size 20px
+        margin-top -4px
     nav
       position fixed
       top 0
@@ -45,25 +47,32 @@
     button,
     MessageBox
   } from 'mint-ui';
+
+  import vSearch from '../search/searbar.vue';
+
   export default {
+    components:{vSearch},
     data(){
       return{
-        aaa:'<span>121</span><span>13123123</span><span>2dsdfsddd</span>'
+        isSearch:false
       }
     },
     methods: {
-      handleClose() {
-        // Toast({
-        //   message:'fsdafs'
-        // })
-        this.$router.push({
-          path:'/playing'
-        })
-        MessageBox({
-          title: 'nnn',
-          message: 'fsafsa',
-          showCancelButton: true
-        })
+      // handleClose() {
+      //   // Toast({
+      //   //   message:'fsdafs'
+      //   // })
+      //   this.$router.push({
+      //     path:'/playing'
+      //   })
+      //   MessageBox({
+      //     title: 'nnn',
+      //     message: 'fsafsa',
+      //     showCancelButton: true
+      //   })
+      // }
+      search(){
+        this.isSearch=true;
       }
     }
   }
