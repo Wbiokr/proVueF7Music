@@ -56,6 +56,9 @@
         // Toast({
         //   message:'fsdafs'
         // })
+        this.$router.push({
+          path:'/playing'
+        })
         MessageBox({
           title: 'nnn',
           message: 'fsafsa',
