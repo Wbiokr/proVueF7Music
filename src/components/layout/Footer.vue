@@ -18,7 +18,8 @@
 </template> 
 <style lang="stylus" scoped>
   .footer
-    // position fix
+    position fixed
+    z-index 10
   .footBox
     background #fff
     box-shadow 0 0px 46px 0px rgba(0,0,0,.12)

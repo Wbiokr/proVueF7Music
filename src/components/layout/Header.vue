@@ -54,25 +54,17 @@
     components:{vSearch},
     data(){
       return{
-        isSearch:false
+        // isSearch:false
       }
     },
     methods: {
-      // handleClose() {
-      //   // Toast({
-      //   //   message:'fsdafs'
-      //   // })
-      //   this.$router.push({
-      //     path:'/playing'
-      //   })
-      //   MessageBox({
-      //     title: 'nnn',
-      //     message: 'fsafsa',
-      //     showCancelButton: true
-      //   })
-      // }
       search(){
-        this.isSearch=true;
+        this.$store.commit('changeSearchBool',true)
+      }
+    },
+    computed:{
+      isSearch(){
+        return this.$store.state.isSearch;
       }
     }
   }

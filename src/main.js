@@ -14,6 +14,9 @@ import './style/iconfont.css';
 Vue.use(MintUI);
 Vue.use(Vuex);
 
+Vue.config.silent=true;
+Vue.config.devtools=true;
+
 Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
