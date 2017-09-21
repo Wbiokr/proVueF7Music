@@ -11,7 +11,7 @@
       mt-badge(class='badge' size='normal' color='transparent' v-for='item in hotwords') {{item}}
     section.historyWord
       h4
-        | 历史搜索
+        | 历史搜索---{{author}}
       mt-cell( class='cell' v-for='item in historyWords' ) 
         | {{item}}
 </template>
@@ -77,6 +77,11 @@
     methods: {
       cancel() {
         console.log(21212)
+      }
+    },
+    computed:{
+      author(){
+        return this.$store.state.author;
       }
     }
   }
