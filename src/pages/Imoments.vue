@@ -1,4 +1,4 @@
 <template lang='jade'>
   .moments
-    moments页面
+    | moments 页面
 </template>

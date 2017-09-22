@@ -2,7 +2,8 @@
     div
       router-view 
       vAudio
-      audio(:src='music' autoplay='false' controls loop) 您的浏览器不支持audio标签
+        p 您的浏览器可能会不支持audio标签
+      //- audio(:src='music' autoplay='false' controls loop) 您的浏览器不支持audio标签
       vList
 </template>
 
@@ -12,9 +13,10 @@
 </style>
 <script>
   import vList from '../components/music/list.vue';
+  import vAudio from '../components/music/audio.vue';
   export default{
     data(){return{}},
-    components:{vList},
+    components:{vList,vAudio},
     computed:{
       music(){
         return this.$store.state.music.musicFormatSrc

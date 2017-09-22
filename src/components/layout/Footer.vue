@@ -15,7 +15,7 @@
               canvas(width=40 height=40 ref='canvas' @click.stop='togglePlay')
             li.icon
               i(class='iconfont icon-ALIGNLEFT' @click.stop='toggleList')
-</template> 
+</template>
 <style lang="stylus" scoped>
   .footer
     position fixed
@@ -72,51 +72,56 @@
               height 55px
 </style>
 <script>
-  export default{
-    data(){
+  export default {
+    data() {
       return {
-        dom:null,
-        play:true
+        dom: null,
+        // play: true
       }
     },
-    mounted(){
-      let canvas=this.$refs.canvas;
-      this.dom=canvas.getContext('2d');
+    computed:{
+      play(){
+        return this.$store.state.music.isPlay;
+      }
+    },
+    mounted() {
+      let canvas = this.$refs.canvas;
+      this.dom = canvas.getContext('2d');
       this.drawInit(this.dom)
     },
-    methods:{
-      drawInit(ctx){
+    methods: {
+      drawInit(ctx) {
         ctx.beginPath();
-        ctx.strokeStyle='#666';
-        ctx.arc(20,20,19,0,2*Math.PI);
+        ctx.strokeStyle = '#666';
+        ctx.arc(20, 20, 19, 0, 2 * Math.PI);
         ctx.stroke();
         this.drawPlay(ctx);
       },
-      drawPause(ctx){
-        ctx.clearRect(12,12,18,18);
+      drawPause(ctx) {
+        ctx.clearRect(12, 12, 18, 18);
         ctx.beginPath();
-        ctx.moveTo(17,13);
-        ctx.lineTo(17,28);
-        ctx.lineTo(28,21);
-        ctx.lineTo(17,13);
+        ctx.moveTo(17, 13);
+        ctx.lineTo(17, 28);
+        ctx.lineTo(28, 21);
+        ctx.lineTo(17, 13);
         ctx.stroke();
       },
-      togglePlay(){
-        this.play=!this.play;
-        if(this.play){
+      drawPlay(ctx) {
+        ctx.clearRect(12, 12, 18, 18);
+        ctx.beginPath();
+        ctx.strokeRect(15, 15, 11, 11);
+      },
+      togglePlay() {
+        // this.play = !this.play;
+        this.$store.commit('changeMusic',['isPlay',!this.$store.state.music.isPlay])
+        if (this.play) {
           this.drawPlay(this.dom);
-        }else{
-
+        } else {
           this.drawPause(this.dom);
         }
       },
-      drawPlay(ctx){
-        ctx.clearRect(12,12,18,18);
-        ctx.beginPath();
-        ctx.strokeRect(15,15,11,11);
-      },
-      toggleList(){
-        this.$store.commit('changeMusic',['isListObs',true])
+      toggleList() {
+        this.$store.commit('changeMusic', ['isListObs', true])
       }
     }
   }
