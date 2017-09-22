@@ -8,7 +8,6 @@ import concat from '../pages/Iconcat.vue';
 import moments from '../pages/Imoments.vue';
 
 Vue.use(Router);
-console.log(self)
 
 export default new Router({
   mode:'history',//'history' 之后将使用 HTML5 history 模式，该模式下没有 # 前缀，而且可以使用 pushState 和 replaceState 来管理记录。
