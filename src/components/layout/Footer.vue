@@ -92,7 +92,7 @@
         ctx.stroke();
         this.drawPlay(ctx);
       },
-      drawPlay(ctx){
+      drawPause(ctx){
         ctx.clearRect(12,12,18,18);
         ctx.beginPath();
         ctx.moveTo(17,13);
@@ -110,13 +110,13 @@
           this.drawPause(this.dom);
         }
       },
-      drawPause(ctx){
+      drawPlay(ctx){
         ctx.clearRect(12,12,18,18);
         ctx.beginPath();
         ctx.strokeRect(15,15,11,11);
       },
       toggleList(){
-        console.log(111111)
+        this.$store.commit('changeMusic',['isListObs',true])
       }
     }
   }

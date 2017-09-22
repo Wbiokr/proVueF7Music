@@ -1,6 +1,6 @@
 <template lang="jade">
-  .musicList
-    .listBg
+  .musicList(v-if='songList&&songList.length>0&&isListObs')
+    .listBg(@click='downList')
     .listContent
       h4
         p.playmode
@@ -10,12 +10,13 @@
           i(class='icon iconfont icon-MAGNIFYINGGLASSPLU')
           | 收藏
         p.clear
-          i(class='icon iconfont icon-TRASHBIN')
+          i(class='icon iconfont icon-TRASHBIN' @click.stop='deleteItem(0,true)')
           | 清空
-      ul
-        li(v-for='item of songList')
-          span {{item}}
-          i(class='iconfont icon-CLOSE')
+      div  
+        ul
+          li(v-for='(item,index) of songList')
+            span {{item}}
+            i(class='iconfont icon-CLOSE' @click.stop='deleteItem(index)')
 </template>
 <style lang="stylus" scoped>
   .musicList
@@ -25,6 +26,7 @@
     top 0
     left 50%
     transform translate(-50%)
+    z-index 51
   .listBg
     height  100%
     width 100%
@@ -39,13 +41,18 @@
     z-index 51
     bottom 0
     width 100%
-    max-height 65%
+    // max-height 65%
     box-sizing border-box
     background rgba(255,255,255,1)
-    // padding 0 10px
+    // overflow auto
+    // &::-webkit-scrollbar
+    //   display none 
     >*
       padding 0 10px
     h4
+      // position fixed
+      bottom 0
+      width 100%
       font-weight 500
       line-height 52px
       border-bottom 1px solid #dedede
@@ -55,15 +62,20 @@
         flex 1
       .add
         margin-right 30px  
-    ul
-      padding 5px 0
-      li
-        padding 0 10px
-        line-height 45px
-        border-bottom 1px solid #dedede
-        display flex
-        justify-content space-between
-        // >*
+    div  
+      max-height 380px
+      overflow auto
+      &::-webkit-scrollbar
+        display none 
+      ul
+        // padding 0 0 70px 0
+        li
+          padding 0 10px
+          line-height 45px
+          border-bottom 1px solid #dedede
+          display flex
+          justify-content space-between
+          // >*
 </style>
 <script>
   export default{
@@ -72,7 +84,20 @@
         return 45
       },
       songList(){
-        return ['關於鄭州的記憶','天空之城','故鄉','沒有寄出的信','關於鄭州的記憶','天空之城','故鄉','沒有寄出的信','關於鄭州的記憶','天空之城','故鄉','沒有寄出的信']
+        return this.$store.state.music.musicList;
+      },
+      isListObs(){
+        return this.$store.state.music.isListObs;
+      }
+    },
+    methods:{
+      deleteItem(i,isClear){
+        let num=isClear?this.songList.splice(0,this.songList.length):this.songList.splice(i,1);
+        // this.songList.splice(i,1);
+        this.$store.commit('changeMusic',['musicList',this.songList])
+      },
+      downList(){
+        this.$store.commit('changeMusic',['isListObs',false])
       }
     }
   }
