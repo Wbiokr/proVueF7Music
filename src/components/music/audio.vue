@@ -1,6 +1,6 @@
 <template lang='jade'>
   div.audio   
-    audio(:src='music'  controls loop ref='audio' ontimeupdate='change') 您的浏览器不支持audio标签
+    audio(:src='music'  controls loop ref='audio' ) 您的浏览器不支持audio标签
     slot
 </template>
 <style lang="stylus">
@@ -8,13 +8,9 @@
     display block
 </style>
 <script>
-  // import vList from '../components/music/list.vue';
-  function change(){
-    console.log(document.querySelector('audio').currentTime)
-  }
-  export default{
+  // import Vue from 'vue';
+  const vm={
     data(){return{}},
-    // components:{vList},
 
     computed:{
       music(){
@@ -27,9 +23,12 @@
         return this.$store.state.music.isPlay;
       }
     },
+    created(){
+      },
     mounted(){
       this.isPlay?this.$refs.audio.play():this.$refs.audio.pause();
-      this.rangeChagne();
+      this.$nextTick(this.rangeChagne());
+      // this.rangeChagne();
     },
     watch:{
       isPlay(newV,oldV){
@@ -46,8 +45,16 @@
         console.log(this.$refs.audio.currentTime)
       },
       rangeChagne(){
-        console.log(this.$refs.audio.currentTime)
-      }
+        this.$refs.audio.addEventListener('timeupdate',()=>{
+          let currentTime=this.$refs.audio.currentTime;
+          let duration=this.$refs.audio.duration;
+          let progress=Number(currentTime)/Number(duration);
+          // console.log(progress*100+'%');
+          this.$store.commit('changeMusic',['progress',progress])
+        })
+      },
+
     }
-  }
+  };
+  export default vm;
 </script>
