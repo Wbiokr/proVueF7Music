@@ -84,19 +84,19 @@
       this.dom = canvas.getContext('2d');
       this.$nextTick(this.drawInit(this.dom));
       // let canvas=this.dom;
-      // let width = canvas.width,
-      //   height = canvas.height;
-      // if (window.devicePixelRatio) {
-      //   canvas.style.width = width + "px";
-      //   canvas.style.height = height + "px";
-      //   canvas.height = height * window.devicePixelRatio;
-      //   canvas.width = width * window.devicePixelRatio;
-      //   this.dom.scale(window.devicePixelRatio, window.devicePixelRatio);
-      // }
+      let width = canvas.width,
+        height = canvas.height;
+      if (window.devicePixelRatio) {
+        canvas.style.width = width + "px";
+        canvas.style.height = height + "px";
+        canvas.height = height * window.devicePixelRatio;
+        canvas.width = width * window.devicePixelRatio;
+        this.dom.scale(window.devicePixelRatio, window.devicePixelRatio);
+      }
     },
     methods: {
       drawInit(ctx) {
-        ctx.clearRect(20, 20, 40, 40);
+        ctx.clearRect(0, 0, 50, 50);
         this.drawDuration(ctx);
         this.togglePlay(ctx);
         this.drawProgress(ctx);
@@ -114,15 +114,19 @@
         ctx.closePath();
       },
       drawPlay(ctx) {
-        ctx.beginPath();
-        ctx.strokeStyle = '#666';
+         ctx.beginPath();
+        ctx.strokeStyle = '#f00';
         ctx.clearRect(12, 12, 18, 18);
         ctx.beginPath();
-        ctx.strokeRect(15, 15, 11, 11);
+        ctx.moveTo(17,15);
+        ctx.lineTo(17,26);
+        ctx.moveTo(24,15);
+        ctx.lineTo(24,26)
+        ctx.stroke();
+        ctx.save();
         ctx.closePath();
       },
       drawDuration(ctx) {
-        // console.log(this.progress);
         ctx.beginPath();
         ctx.strokeStyle = '#666';
         ctx.lineWidth=1;
@@ -143,12 +147,15 @@
         ctx.closePath();
       },
       togglePlay() {
-        // this.play = !this.play;
         this.$store.commit('changeMusic', ['isPlay', !this.$store.state.music.isPlay])
         if (this.play) {
           this.drawPlay(this.dom);
+
         } else {
-          this.drawPause(this.dom);
+          setTimeout(()=>{
+            
+            this.drawPause(this.dom);
+          },10)
         }
       },
       toggleList() {
@@ -157,16 +164,15 @@
     },
     watch: {
       progress(newV, oldV) {
-        // console.log(newV);
-        if (newV === 0) {
+        if (newV == 0) {
           this.drawInit(this.dom);
-          return
+          return ;
         };
-        this.dom.clearRect(20,20,40,40);
+
+        this.dom.clearRect(0,0,50,50);
         this.drawDuration(this.dom);
         this.drawProgress(this.dom);
         this.drawPlay(this.dom);
-        // this.drawInit(this.dom);
       }
     },
     computed: {

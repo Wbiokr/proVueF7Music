@@ -8,10 +8,8 @@
     display block
 </style>
 <script>
-  // import Vue from 'vue';
   const vm={
     data(){return{}},
-
     computed:{
       music(){
         return this.$store.state.music.musicFormatSrc;
@@ -28,7 +26,6 @@
     mounted(){
       this.isPlay?this.$refs.audio.play():this.$refs.audio.pause();
       this.$nextTick(this.rangeChagne());
-      // this.rangeChagne();
     },
     watch:{
       isPlay(newV,oldV){
@@ -37,19 +34,19 @@
         }else{
           this.$refs.audio.pause()
         };
-        console.log(this.$refs.audio.currentTime)
       }
     },
     methods:{
       timeupdate(){
-        console.log(this.$refs.audio.currentTime)
       },
       rangeChagne(){
         this.$refs.audio.addEventListener('timeupdate',()=>{
           let currentTime=this.$refs.audio.currentTime;
           let duration=this.$refs.audio.duration;
           let progress=Number(currentTime)/Number(duration);
-          // console.log(progress*100+'%');
+          if(progress>=1){
+            progress=0;
+          }
           this.$store.commit('changeMusic',['progress',progress])
         })
       },
