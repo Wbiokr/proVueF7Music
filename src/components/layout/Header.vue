@@ -1,7 +1,7 @@
 <template lang='jade'>
   .header(:class="{'e32':!isSearch}")
     mt-header(title='' class='headeBar e32' v-show='!isSearch')
-      mt-button(icon="icon iconfont icon-HAMBURGERMENU" slot='left' class='setting')
+      mt-button(icon="icon iconfont icon-HAMBURGERMENU" slot='left' class='setting' @click='setting')
       mt-button(icon="search" slot="right" @click='search')
     nav(v-show='!isSearch')
       router-link(to="/") 
@@ -60,6 +60,10 @@
     methods: {
       search(){
         this.$store.commit('changeSearchBool',true)
+      },
+      setting(){
+        console.log(this.$store.state.setting.stCurrent)
+        this.$store.commit('changeCommon',['setting','stCurrent','current'])
       }
     },
     computed:{

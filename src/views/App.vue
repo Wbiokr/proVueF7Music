@@ -10,6 +10,9 @@
 <style lang="stylus">
   body
     background rgba(240,240,240,.9)
+    max-width 750px
+    *
+      max-width 750px
 </style>
 <script>
   import vList from '../components/music/list.vue';

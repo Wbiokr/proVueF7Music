@@ -5,7 +5,7 @@
 </template>
 <style lang="stylus">
   .audio
-    display block
+    display none
 </style>
 <script>
   const vm={
@@ -37,8 +37,6 @@
       }
     },
     methods:{
-      timeupdate(){
-      },
       rangeChagne(){
         this.$refs.audio.addEventListener('timeupdate',()=>{
           let currentTime=this.$refs.audio.currentTime;

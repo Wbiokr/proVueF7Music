@@ -6,13 +6,15 @@
       router-view
     .footer
       vFooter
+    .setting
+      vSetting
 </template>
 <script>
   import vHeader from '../components/layout/Header.vue';
   import vFooter from '../components/layout/Footer.vue';
-
+  import vSetting from '../components/left/setting.vue';
   export default {
-    components:{vHeader,vFooter}
+    components:{vHeader,vFooter,vSetting}
   }
 </script>
 <style lang="stylus" scoped>

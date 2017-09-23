@@ -20,6 +20,10 @@
   .footer
     position fixed
     z-index 10
+    left 50%
+    bottom 0
+    width 100%
+    transform translateX(-50%)
   .footBox
     background #fff
     box-shadow 0 0px 46px 0px rgba(0,0,0,.12)
@@ -72,6 +76,7 @@
               height 55px
 </style>
 <script>
+  import {MessageBox} from 'mint-ui';
   export default {
     data() {
       return {
@@ -101,9 +106,9 @@
         this.togglePlay(ctx);
         this.drawProgress(ctx);
       },
-      drawPause(ctx) {
+      drawPause(ctx,color) {
         ctx.beginPath();
-        ctx.strokeStyle = '#666';
+        ctx.strokeStyle = '#999';
         ctx.clearRect(12, 12, 18, 18);
         ctx.beginPath();
         ctx.moveTo(17, 13);
@@ -128,20 +133,18 @@
       },
       drawDuration(ctx) {
         ctx.beginPath();
-        ctx.strokeStyle = '#666';
+        let color=this.play?'#999':'#121212';
+        ctx.lineWidth=2;
+        ctx.strokeStyle = color;
         ctx.lineWidth=1;
         ctx.arc(20, 20, 19, 0, 2 * Math.PI);
         ctx.stroke();
         ctx.closePath();
-        // ctx.strokeStyle='#ff543c';
-        // ctx.arc(20,20,19,0,2*Math.PI*0.2);
-        // ctx.stroke();
       },
       drawProgress(ctx) {
         ctx.beginPath();
-        ctx.strokeStyle = '#ff543c';
+        ctx.strokeStyle = '#f00';
         ctx.lineWidth = 2;
-        // ctx.translate(0.5,0.5);
         ctx.arc(20, 20, 19, 0, 2 * Math.PI * this.progress);
         ctx.stroke();
         ctx.closePath();
@@ -159,6 +162,22 @@
         }
       },
       toggleList() {
+        if(this.$store.state.music.musicList.length===0){
+          MessageBox({
+            title:'sorry !',
+            message:'你的歌曲清单为空！点击确定进入搜索选歌！',
+            showCancelButton:true,
+            showConfirmButton:true,
+            confirmButtonText:'去搜索...',
+            cancelButtonText:'不想去...'
+          }).then((e)=>{
+            if(e==='cancel') return ;
+            setTimeout(()=>{
+              this.$store.commit('changeSearchBool',true);
+            },200)
+          });
+          return ;
+        }
         this.$store.commit('changeMusic', ['isListObs', true])
       }
     },

@@ -10,7 +10,7 @@ const store=new Vuex.Store({
     author:'和你同路',
     isSearch:false,
     music:{
-      musicFormatSrc:ms,
+      musicFormatSrc:'',
       // musicFormatSrc:'http://dl.stream.qqmusic.qq.com/C400003iDFNR04D7QS.m4a?vkey=CE6A0A9F43CAFEDECA97FEDD4AF08667A21694B7AC89535E175EFCF9517B86E9E4A13FF57E0A697BB607CB976759D6D4CBABC1A2E9969BBA&guid=2715572228&uin=0&fromtag=66',
       isPlay:false,
       isAutoPlay:false,
@@ -19,6 +19,36 @@ const store=new Vuex.Store({
       currentTime:'0',
       allTime:'0',
       progress:'0'
+    },
+    setting:{
+      stCurrent:'',
+      msg:[{value:'我的消息'},{value:'会员中心'},{value:'商城'},{value:'在线听歌免流量'}],
+      position:[{value:'我的好友'},{value:'附近的人'}],
+      other:[{
+        value:'个性换肤',
+        
+      },{
+        value:'个性换肤',
+        
+      },{
+        value:'个性换肤',
+        
+      },{
+        value:'个性换肤',
+        
+      },{
+        value:'个性换肤',
+        
+      },{
+        value:'个性换肤',
+        
+      },{
+        value:'个性换肤',
+        
+      },{
+        value:'个性换肤',
+        
+      },]
     }
   },
   mutations:{
@@ -28,6 +58,9 @@ const store=new Vuex.Store({
     changeMusic(state,[key,value]){
       // console.log(key,value);
       state['music'][key]=value;
+    },
+    changeCommon(state,[key1,key2,value]){
+      state[key1][key2]=value;
     }
   }
 });
