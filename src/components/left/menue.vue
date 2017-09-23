@@ -26,6 +26,16 @@
             li(v-for='item in setting.other')
               | {{item.value}}
       footer
+        ul
+          li
+            i(class='icon iconfont icon-STAR') 
+            | 夜间模式
+          li
+            i(class='icon iconfont icon-SETTINGS') 
+            | 设置
+          li
+            i(class='icon iconfont icon-LOCKCLOSED')
+            | 退出
 </template>
 <style lang="stylus" scoped>
 @import '../../style/mixin';
@@ -41,6 +51,9 @@
     top 0 
     left 0
     transition all linear .2s
+    // overflow auto
+    &::-webkit-scrollbar
+      display none
     &.current
       visibility visible
       background rgba(0,0,0,0.5)
@@ -48,10 +61,10 @@
       transition all linear .5s
   .wrapper
     transform translateX(-100%)
-    position fixed
-    z-index 55
-    left 0
-    top 0
+    // position fixed
+    // z-index 55
+    // left 0
+    // top 0
     width 80%
     height 100%
     background #dedede
@@ -59,22 +72,26 @@
     transition all ease .3s
     display flex
     flex-direction column
+    // overflow auto
     &.current
       transform translateX(0)
       transition all ease .4s 
     >header
       width 100%
-      height 200px
+      height 28%
       background url('../../img/left_bg.jpg')  
       background-size 100% 
-      flex 1
+      // flex 0
+      display flex
+      flex-direction column-reverse
+      padding 0 15px 18px
       dl
         // position 
         // width 
-        w-h(100%)
+        // w-h(100%)
         // padding-top 80px
-        padding 75px 15px 0
-        background rgba(255,255,255,.1) 
+        // padding 75px 15px 0
+        // background rgba(255,255,255,.1) 
         dt
           img 
             b-r-5(80px)
@@ -86,22 +103,35 @@
           .bdgeL
             margin-left 10px
     >footer
-      position fixed
+      flex 1
+      background #fff
+      b-t-1()
+      >ul
+        width 100%
+        height 100%
+        display flex
+        justify-content center
+        align-items center
+        li 
+          flex 1.5
+          text-align center
+          &:nth-child(1)
+            flex 2
+            text-align left
+            padding-left 20px
     >section
-      // padding 20px 10px
+      height 65%
+      overflow auto
       .position ul
         margin 5px 0
+      .other ul li:last-child
+        border 0
       ul
-        // padding 10px 0 
-        
         li
           line-height 40px
           background #fff
           padding 0 15px
           b-b-1()
-          // &:first-child
-          //   margin-top 10px
-      
 </style>
 <script>
   export default{

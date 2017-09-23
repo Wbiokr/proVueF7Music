@@ -4,15 +4,15 @@
       mt-button(icon="icon iconfont icon-HAMBURGERMENU" slot='left' class='setting' @click='setting')
       mt-button(icon="search" slot="right" @click='search')
     nav(v-show='!isSearch')
-      router-link(to="/") 
+      router-link(to="/index/left") 
         i(class='icon-MUSIC iconfont')
-      router-link(to='/home/') 
+      router-link(to='/index/center') 
         i(class='iconfont icon-SPEAKER')
-      router-link(to='/home/') 
+      router-link(to='/index/right') 
         i(class='iconfont icon-DISPLAY')
     vSearch(v-if='isSearch')    
 </template>
-<style lang="stylus">
+<style lang="stylus" scoped>
   .header
     height 60px
     position fixed 

@@ -12,7 +12,7 @@
 <script>
   import vHeader from '../components/layout/Header.vue';
   import vFooter from '../components/layout/Footer.vue';
-  import vSetting from '../components/left/setting.vue';
+  import vSetting from '../components/left/menue.vue';
   export default {
     components:{vHeader,vFooter,vSetting}
   }

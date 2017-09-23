@@ -1,4 +1,11 @@
+/*---------变量存放区-------------*/
+_b-c=#dedede
+_b-f-6=#666
+_b-c-f=#fff
+
+/*-----------函数存放区----------------*/
 // 长宽一样，border-radius 50%的圆
+
 b-r-5($c)
   width $c
   height @width
@@ -8,3 +15,19 @@ w-h($c)
   height @width
 b-b-1()
   border-bottom 1px solid #dedede;
+b-t-1()
+  border-top 1px solid #dedede;
+/*------------常用类存放区--------------*/
+.b-l
+  &:last-child
+    border 0
+.b-f
+  &:first-child
+    border 0
+.d-f-j
+  display flex
+  justify-content space-between
+
+.i-t-r
+  transform rotate(90deg)
+  transition all linear .3s

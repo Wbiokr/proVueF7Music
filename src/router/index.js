@@ -3,9 +3,9 @@ import Router from 'vue-router';
 import index from '../pages/index.vue';
 import playing from '../pages/playing.vue';
 
-import self from '../pages/Iself.vue';
-import concat from '../pages/Iconcat.vue';
-import moments from '../pages/Imoments.vue';
+import left from '../pages/index/left.vue';
+import center from '../pages/index/center.vue';
+import right from '../pages/index/right.vue';
 
 Vue.use(Router);
 
@@ -18,16 +18,20 @@ export default new Router({
       component:index,
       children:[
         {
-          path:'self',//二级路由直接写名称，否则会被识别为一级路由
-          component:self
+          path:'left',//二级路由直接写名称，否则会被识别为一级路由
+          component:left
         },
         {
-          path:'concat',
-          component:concat
+          path:'center',
+          component:center
         },
         {
-          path:'moments',
-          component:moments
+          path:'right',
+          component:right
+        },
+        {
+          path:'/',
+          redirect:'left'
         }
       ]
     },

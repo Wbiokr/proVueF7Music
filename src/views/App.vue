@@ -3,7 +3,6 @@
       router-view 
       vAudio
         p 您的浏览器可能会不支持audio标签
-      //- audio(:src='music' autoplay='false' controls loop) 您的浏览器不支持audio标签
       vList
 </template>
 
@@ -17,6 +16,7 @@
 <script>
   import vList from '../components/music/list.vue';
   import vAudio from '../components/music/audio.vue';
+  import {Toast} from 'mint-ui';
   export default{
     data(){return{}},
     components:{vList,vAudio},
@@ -27,6 +27,13 @@
       autoPlay(){
         return this.$store.state.music.isAutoPlay
       }
+    },
+    mounted(){
+      Toast({
+        message:'welcome to come here !',
+        position:'center',
+        duration:2000
+      })
     }
   }
 </script>

@@ -1,4 +1,4 @@
 <template lang='jade'>
-  .concat
-    yemmfds
+  .indexCenter
+    | center页面
 </template>

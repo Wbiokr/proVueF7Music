@@ -15,6 +15,7 @@
               canvas(width=40 height=40 ref='canvas' @click.stop='togglePlay')
             li.icon
               i(class='iconfont icon-ALIGNLEFT' @click.stop='toggleList')
+    slot
 </template>
 <style lang="stylus" scoped>
   .footer
