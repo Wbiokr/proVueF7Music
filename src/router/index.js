@@ -3,10 +3,6 @@ import Router from 'vue-router';
 import index from '../pages/index.vue';
 import playing from '../pages/playing.vue';
 
-import left from '../pages/index/left.vue';
-import center from '../pages/index/center.vue';
-import right from '../pages/index/right.vue';
-
 Vue.use(Router);
 
 export default new Router({
@@ -19,15 +15,29 @@ export default new Router({
       children:[
         {
           path:'left',//二级路由直接写名称，否则会被识别为一级路由
-          component:left
+          component:res=>require(['../pages/index/left.vue'],res)
         },
         {
           path:'center',
-          component:center
+          component:res=>require(['../pages/index/center.vue'],res),
+          children:[
+            {
+              path:'music',
+              component:res=>require(['../pages/index/center/ICmusic.vue'],res)
+            },
+            {
+              path:'audio',
+              component:res=>require(['../pages/index/center/ICaudio.vue'],res)
+            },
+            {
+              path:'video',
+              component:res=>require(['../pages/index/center/ICvide.vue'],res)
+            }
+          ]
         },
         {
           path:'right',
-          component:right
+          component:res=>require(['../pages/index/right.vue'],res)
         },
         {
           path:'/',

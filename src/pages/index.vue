@@ -18,6 +18,9 @@
   }
 </script>
 <style lang="stylus" scoped>
-  .content
-    padding 60px 0 70px
+  #index
+    height 100%
+    .content
+      padding 60px 0 70px
+      height @height
 </style>

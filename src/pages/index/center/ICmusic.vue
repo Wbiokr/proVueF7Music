@@ -1,3 +1,5 @@
-<template>
-  music页面
+<template lang='jade'>
+  .centerMusic
+    slot
+    | music
 </template>

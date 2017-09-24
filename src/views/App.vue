@@ -1,5 +1,5 @@
 <template lang='jade'>
-    div
+    div(style='height:100%')
       router-view 
       vAudio
         p 您的浏览器可能会不支持audio标签
@@ -10,8 +10,11 @@
   body
     background rgba(240,240,240,.9)
     max-width 750px
+    height 100%
     *
       max-width 750px
+    div
+      // height 100%
 </style>
 <script>
   import vList from '../components/music/list.vue';

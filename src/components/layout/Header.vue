@@ -4,15 +4,16 @@
       mt-button(icon="icon iconfont icon-HAMBURGERMENU" slot='left' class='setting' @click='setting')
       mt-button(icon="search" slot="right" @click='search')
     nav(v-show='!isSearch')
-      router-link(to="/index/left") 
+      router-link(to="/index/left" active-class='active') 
         i(class='icon-MUSIC iconfont')
-      router-link(to='/index/center') 
+      router-link(to='/index/center' active-class='active') 
         i(class='iconfont icon-SPEAKER')
-      router-link(to='/index/right') 
+      router-link(to='/index/right' active-class='active') 
         i(class='iconfont icon-DISPLAY')
     vSearch(v-if='isSearch')    
 </template>
 <style lang="stylus" scoped>
+  @import '../../style/mixin'
   .header
     height 60px
     position fixed 
@@ -39,8 +40,11 @@
       a
         flex 0
         font-size 22px
-        color #fff
-        
+        color _b-c-f
+        transition color ease .37s
+        &.active
+          color _b-c-a
+          font-weight 800
 </style>
 <script>
   import {

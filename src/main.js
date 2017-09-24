@@ -2,6 +2,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue';
 import Vuex from 'vuex';
+import './mixin/title';
 import store from './vuex/store';
 import App from './views/App';
 import router from './router';

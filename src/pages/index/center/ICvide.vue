@@ -1,3 +1,4 @@
 <template lang='jade'>
-  .video
+  .centerVideo
+    | video页面
 </template>
