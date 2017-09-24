@@ -18,6 +18,7 @@
     position fixed 
     top 0
     width 100%
+    z-index 1
     // padding-top 20px
     .headeBar
       height 100%

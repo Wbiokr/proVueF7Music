@@ -18,13 +18,15 @@
           i(class='iconfont icon-CLOSE' @click='close(index)')
 </template>
 <style lang="stylus">
+@import '../../style/mixin'
   .search
     position fixed
     z-index 1
     top 0
     width 100%
     height 100%
-    background rgba(250,250,250,.7)
+    // background rgba(250,250,250,1)
+    background _b-c-f
     padding 5px
     h4
       font-size 16px
