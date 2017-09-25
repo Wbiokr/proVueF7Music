@@ -2,11 +2,11 @@
   .indexCenter
     slot 
     nav
-      router-link(:to="routerName('music')" tag="a") 
+      router-link(:to="routerName('music')" tag="a" active-class='active') 
         | 音乐
-      router-link(:to="routerName('video')" tag="a") 
+      router-link(:to="routerName('video')" tag="a" active-class='active') 
         | 视频
-      router-link(:to="routerName('audio')" tag="a")
+      router-link(:to="routerName('audio')" tag="a" active-class='active')
         | 电台 
     router-view 
 </template>

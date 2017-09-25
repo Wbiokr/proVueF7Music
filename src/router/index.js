@@ -32,6 +32,10 @@ export default new Router({
             {
               path:'video',
               component:res=>require(['../pages/index/center/ICvide.vue'],res)
+            },
+            {
+              path:'/',
+              redirect:'music'
             }
           ]
         },
