@@ -38,8 +38,14 @@
       @extend .d-f-j
       align-items center
       background darken(#fff,0)
+      line-height 100%
       >a
         @extend .f-1-c
         margin 0 20px
         color _b-f-6
+        h-l-h(100%)
+        line-height 250%
+        &.active
+          color darken(#f00,10%)
+          b-t-c(darken(#f00,2%))
 </style>

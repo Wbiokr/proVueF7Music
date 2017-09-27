@@ -10,7 +10,15 @@ import MintUI from 'mint-ui';
 import 'mint-ui/lib/style.css';
 import './style/normalize.css';
 import './style/iconfont.css';
-// import 'font-awesome';
+
+import VueLazyLoad from 'vue-lazyload';
+
+Vue.use(VueLazyLoad,{
+  preLoad: 1.3,
+  // error: 'dist/error.png',
+  // loading: 'dist/loading.gif',
+  attempt: 3
+})
 
 Vue.use(MintUI);
 Vue.use(Vuex);

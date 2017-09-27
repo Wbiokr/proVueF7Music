@@ -2,10 +2,10 @@
   //- div.leftSetting 
   .zezhao(:class='setting.stCurrent' @click.stop='cacelSetting') 
     .wrapper(:class='setting.stCurrent' @click.stop='cacelSetting(1)')
-      header
+      header(v-lazy:background-image = 'src.bg' )
         dl
           dt
-           img(src='../../img/left_header.jpg')
+           img(v-lazy='src.photo')
           dd
             p
               | 和你同路
@@ -79,7 +79,7 @@
     >header
       width 100%
       height 28%
-      background url('../../img/left_bg.jpg')  
+      // background url('../../img/left_bg.jpg')  
       background-size 100% 
       // flex 0
       display flex
@@ -134,8 +134,23 @@
           b-b-1()
 </style>
 <script>
+// import Vue from 'vue';
+// import { Lazyload } from 'mint-ui';
+
+// Vue.use(Lazyload);
+
+// let photo=res=>require(["../../img/left_header.jpg"],res)
+import photo from '../../img/left_header.jpg';
+import bg from '../../img/left_bg.jpg'
+
+console.log(photo)
+// console.log(Lazyload)
   export default{
-    data(){return{}},
+    data(){return{
+      src:{
+        photo,bg
+      }
+    }},
     computed:{
       setting(){
         return this.$store.state.setting
