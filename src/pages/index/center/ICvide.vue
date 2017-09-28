@@ -1,11 +1,25 @@
 <template lang='jade'>
-  .centerVideo
-    //- section(v-for='item in source')
-      //- video()
-    my-video(v-bind:sources='video.source' v-bind:options='video.options')
+.centerVideo
+  .box
+    section(v-for='item in video')
+      my-video(v-bind:sources='item.source' v-bind:options='item.options')
+      .clearfix.warpper
+        .title
+          | 宫老爷子真是敬业，动画配音都要亲临现场
+        .btn
+          span(@click='thumbsUp')
+            i(class='icon iconfont icon-LAUNCH')
+            span  255
+          span(@click='comment')
+            i(class='icon iconfont icon-MAIL')
+            span 86
+          span(@click='share')
+            i(class='icon iconfont icon-SHARE')
+            span 分享  
 </template>
 <script>
   import myVideo from 'vue-video';
+  import {MessageBox} from 'mint-ui';
   class Source {
     constructor(obj={src: 'https://fsd'}) {
       this.sourceUnit = {};
@@ -41,9 +55,54 @@
     },
     data(){
       return {
-        video:new Options(),
+        video:[
+          new Options(),new Options(),new Options(),new Options(),new Options(),
+        ]
       }
     },
-    components:{myVideo}
+    components:{myVideo},
+    methods:{
+      thumbsUp(e){
+
+        MessageBox.alert('点赞成功！').then(()=>{
+          e.target.innerText?e.target.innerText=Number(e.target.innerText)+1:e.target.nextSibling.innerText=Number(e.target.nextSibling.innerText)+1;
+        })
+      },
+      comment(){
+
+      },
+      share(){
+
+      }
+    }
   }
 </script>
+<style lang="stylus" scoped>
+@import '../../../style/mixin'
+
+.centerVideo
+  height 100%
+  overflow auto
+  .box
+    height auto
+    >section
+      >div.warpper
+        height 70px
+        padding 10px 10px
+        >div
+          height 100%
+        .title
+          font-size 16px
+          float left
+          width 60%
+          line-height 24px
+        .btn
+          @extend .d-f-j
+          >span
+            font-size 10px
+            text-align center
+            flex 1
+            i
+              display block
+              font-size 24px
+</style>
