@@ -8,8 +8,9 @@
 </div>
 </template>
 <script>
-import myTree from '../../components/right/tree';
+// import myTree from '../../components/right/tree';
   export default {
+    name:'right',
     created(){
       setInterval(()=>{
         const a={
@@ -69,6 +70,6 @@ import myTree from '../../components/right/tree';
         ]
       }
     },
-    components:{myTree}
+    components:{myTree:res=>require(['../../components/right/tree'],res)}
   }
 </script>

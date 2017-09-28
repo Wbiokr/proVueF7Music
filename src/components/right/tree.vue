@@ -18,7 +18,7 @@
     name:'treeMeun'
   }
 </script>
-<style lang="stylus">
+<style lang="stylus" scoped>
   ul,li
     padding 10px 20px
 </style>

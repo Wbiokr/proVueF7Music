@@ -8,7 +8,8 @@ export const myMx={
   },
   methods:{
     routerName(val){
-      return `${this.pathName.replace(/\/music/g,'')}/${val}`
+      // return `${this.pathName.replace(/\/music/g,'')}/${val}`
+      return `/index/center/${val}`
     }
   }
 }

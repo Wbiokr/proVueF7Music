@@ -4,6 +4,7 @@ _b-f-6=#666
 _b-c-f=#fff
 _b-c-a=#ccc
 _b-c-c=#fdfdfd
+_f-3-c=#ff543c
 
 _h-l=40px
 
@@ -26,10 +27,14 @@ b-t-c($color)
 h-l-h($h)
   height $h
   line-height @height
+b-1($c)
+  border 1px solid $c
 /*------------常用类存放区--------------*/
 .b-l
   &:last-child
     border 0
+.b-0
+  border 0
 .b-f
   &:first-child
     border 0
@@ -47,3 +52,9 @@ h-l-h($h)
 
 .h-100
   height 100%
+.m-a
+  display block
+  margin:0 auto
+.m-0-p-0
+  padding 0
+  margin 0
