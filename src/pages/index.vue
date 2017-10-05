@@ -2,10 +2,10 @@
   #index
     .header
       vHeader
-    .content
+    .content(@click='action')
       router-view
     .footer
-      vFooter
+      vFooter(ref='footer')
     .setting
       vSetting
 </template>
@@ -14,7 +14,15 @@
   import vFooter from '../components/layout/Footer.vue';
   import vSetting from '../components/left/menue.vue';
   export default {
-    components:{vHeader,vFooter,vSetting}
+    components:{vHeader,vFooter,vSetting},
+    methods:{
+      action(){
+        console.log(this.$refs)
+          this.$refs.footer.$emit('footer')       
+          // this.$refs.footer.$emit('footer')
+          // this.$children[2].footerInfor();
+      }
+    }
   }
 </script>
 <style lang="stylus" scoped>

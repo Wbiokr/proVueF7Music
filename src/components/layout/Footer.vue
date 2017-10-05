@@ -98,9 +98,18 @@
         canvas.height = height * window.devicePixelRatio;
         canvas.width = width * window.devicePixelRatio;
         this.dom.scale(window.devicePixelRatio, window.devicePixelRatio);
-      }
+      };
+      this.$on('footer',(val)=>{
+        this.doIt(val)
+      })
     },
     methods: {
+      footerInfor(){
+        console.log('你好吗？')
+      },
+      doIt(val='hello111'){
+        console.log(`父组件穿过的值为${val}`)
+      },
       drawInit(ctx) {
         ctx.clearRect(0, 0, 50, 50);
         this.drawDuration(ctx);
