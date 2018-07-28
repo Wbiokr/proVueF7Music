@@ -51,6 +51,9 @@ const store=new Vuex.Store({
       },]
     }
   },
+  getters:{
+    
+  },
   mutations:{
     changeSearchBool(state,boolTxt){
       state.isSearch=boolTxt;
